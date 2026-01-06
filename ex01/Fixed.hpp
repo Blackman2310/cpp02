@@ -5,11 +5,11 @@
 #include <cmath>
 
 class Fixed{
-    
+
     private :
-    int a;
+    int fixed_point;
     static const int b = 8;
-    
+
     public :
     Fixed();
     Fixed(const Fixed &other);
@@ -21,7 +21,7 @@ class Fixed{
     void setRawBits( int const raw );
     float toFloat( void ) const;
     int toInt( void ) const;
-    
+
 };
 
 #endif
