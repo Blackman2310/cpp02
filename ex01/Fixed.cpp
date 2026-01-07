@@ -37,21 +37,28 @@ Fixed::~Fixed()
     std::cout << "Destructor called" << std::endl;
 }
 
-int Fixed::getRawBits( void ) const
-{
-    std::cout << "getRawBits member function called" << std::endl;
-    return this->fixed_point;
-}
-void Fixed::setRawBits( int const raw )
-{
-    this->fixed_point = raw;
-}
 float Fixed::toFloat( void ) const
 {
-    return (float)(this->fixed_point / (1 >> b));
+    return (float)(this->fixed_point / (float)(1 << b));
 }
 
 int Fixed::toInt( void ) const
 {
     return this->fixed_point >> b;
+}
+
+int Fixed::getRawBits( void ) const
+{
+    return this->fixed_point;
+}
+
+void Fixed::setRawBits( int const raw )
+{
+    this->fixed_point = raw;
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
+{
+    out << fixed.toFloat();
+    return out;
 }
